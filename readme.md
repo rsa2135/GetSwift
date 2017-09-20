@@ -19,7 +19,7 @@ We first try to match the closest drone to the depot with the most urgent delive
 Sorting both lists takes `O(nlog(n))` time and the matching process itself is of linear time complexity. As a result, the proposed solution is of `O(nlog(n))`.
 
 
-## Scalably
+## Scalability
 This approach works well for a limited number of drones and packages but will not scale up to serve thousands of dispatches a second.
 To scale up there are two approaches we can take:
 1. Keeping the same constraints: divide the geographical area into sub sections, and allow for parallel computations. Meaning that instead of one source of all drones, will have multiple sources of drones that cover a smaller area. This will ensure that each process is only in charge of a limited number of assignments and multiple processes can run simultaneously 
