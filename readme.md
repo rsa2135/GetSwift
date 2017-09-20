@@ -3,16 +3,16 @@
 **NOTE**: To run this script make sure that ruby is installed. Then run `ruby match.rb` in the terminal.
 
 ## The Problem
-How to efficiently match drones to packages in such a way that ensure packages will be delivered by the deadline?
+How to efficiently match drones to packages in such a way that ensures packages will be delivered by the deadline?
 
 ## Solution
-Given the '`Packages should be assigned to the drone that can deliver it soonest`' constraint, I knew I had to sort the lists by either time to deliver or distance from depot to make a match. I didn't want to create a bloated application that will affect run-time so I avoided creating additional data-structures such as Heaps (priority queues) and placing the drones and packages in them. Instead, my approach was to sort both lists based on the these criteria:
+Given the '`Packages should be assigned to the drone that can deliver it soonest`' constraint, there was no way around sorting the lists in some way. I didn't want to create a bloated application that will affect run-time so I avoided creating additional data-structures such as Heaps (priority queues) and placing the drones and packages in them. Instead, my approach was to sort both lists based on the these criteria:
 
 * Packages were sorted based on deadline
-* Drones were sorted based on distance to depot 
+* Drones were sorted based on distance to depot  
 **Note**: instead of using the Haversine formula or the law of cosines, I've used Euclidean distance since it's very accurate for short ranges (0.4% error for a 50km range) and much less expensive to compute.
 
-After sorting, the most urgent packages are at the top of the list and the drones that are capable of delivering them fastest are also at the the top of the drones list, hence it's easy to iterate and make a match.
+After sorting, the most urgent packages are at the top of the packages list and the drones that are capable of delivering them fastest are at the the top of the drones list, hence it's easy to iterate and make a match.
 
 We first try to match the closest drone to the depot with the most urgent delivery. If that drone can't make it in time, no other drone in the list will, so that package will remain unassigned. The drone will try to be matched with the next package and so on. This ensures that each packages is matched with the drone who can deliver it soonest.
 
