@@ -1,6 +1,6 @@
 # GetSwift Code Challenge
 
-**NOTE**: To run this problem make sure that ruby is installed. Then run 
+**NOTE**: To run this script make sure that ruby is installed. Then run `ruby match.rb` in the terminal.
 
 ## The Problem
 How to efficiently match drones to packages in such a way that ensure packages will be delivered by the deadline?
